@@ -1,0 +1,51 @@
+.App {
+  text-align: center;
+  color: seagreen;
+}
+
+/*.mario {
+  position: absolute;
+  left: 1em;
+  bottom: 1em;
+}*/
+
+#Coordinates {
+  color: white;
+}
+
+/* The area where the maze game will display. */
+#Maze {
+  text-align: left;
+  width: 700px;
+  height: 500px;
+  margin: auto;
+  color: black;
+  background-color: darkgrey;
+}
+
+.start-button:hover {
+  cursor: pointer;
+}
+
+.restart-button:hover {
+  cursor: pointer;
+}
+
+.next-maze-button:hover {
+  cursor: pointer;
+}
+
+.leaderboard-button:hover {
+  cursor: pointer;
+}
+
+#Countdown {
+  color: black;
+  background-color: white;
+  /*display: inline;*/
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
