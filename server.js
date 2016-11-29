@@ -4,6 +4,11 @@ const app = express();
 const bodyParser = require('body-parser');
 const fs = require('fs');
 // const bcrypt = require('bcryptjs');
+
+// use the port value from the node environment, or 8080 if it can't be found'
+const PORT = process.env.PORT || 8080;
+// Change this from 8080 to 80
+
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/api/data/db');
 
@@ -85,9 +90,6 @@ app.post('/highscores', (req, res) => { // use /highscores instead of /savehighs
     })
 })
 
-// use the port value from the node environment, or 8080 if it can't be found'
-const Port = process.env.PORT || 8080;
-// Change this from 8080 to 80
 app.listen(PORT, function(){
 	console.log("Listening on Port:%s",PORT)
 	console.log("Stop with Ctrl+C");
