@@ -88,8 +88,7 @@ class App extends Component {
   }
 
   leaderboard() {
-    axios.get('/highscores')
-    // axios.get('/highscores')
+    axios.get('http://localhost:8080/highscores')
     .then((response) => {
       console.log(response.data);
       this.setState({
@@ -127,7 +126,6 @@ class App extends Component {
     const { score, timer } = this.state;
     let oldScore = score;
     let newScore = oldScore + timer;
-    console.log(newScore);
       this.setState ({
         score: newScore
       })
@@ -208,6 +206,7 @@ class App extends Component {
             <rect x="45" y="35" width="70" height="35" fill="black"/>
             <text x="54" y="58" fontFamily="Verdana" fontSize="15" fill="red" 
               onClick={this.start} className="start-button"> START </text>
+              <text x="260" y="250" fontFamily="sans-serif" fontSize="45" stroke="black" fill="red">LEVEL {mazesIndex + 1}</text>
         </svg>
       </g>
     )
@@ -238,7 +237,6 @@ class App extends Component {
       </g>
     )
   } else if (quit === true && leaderboard === false) { // Quit.
-    console.log("User is trying to quit the game.");
     mazeState = (
       <g>
       <svg xmlns="http://www.w3.org/2000/svg">
@@ -251,7 +249,6 @@ class App extends Component {
     </g>
     )
   } else if (quit === true && leaderboard === true) { // Leaderboard.
-    console.log("User is trying to access the leaderboard.");
     mazeState = (
       <g>
         <svg xmlns="http://www.w3.org/2000/svg">

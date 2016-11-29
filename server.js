@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const fs = require('fs');
-// const bcrypt = require('bcryptjs');
 
 // use the port value from the node environment, or 8080 if it can't be found'
 const PORT = process.env.PORT || 8080;
@@ -35,30 +34,6 @@ db.once('open', () => {
 // Grabs seed functions.
 const seedHighScores = require('./seeds/highscores');
 seedHighScores();
-
-// Encrypting passwords.
-// app.post('/encrypt', (req,res) => {
-//     let username = req.body.username;
-//     let password = req.body.password;
-
-//     bcrypt.genSalt(10, (err, salt) => {
-//         bcrypt.hash(password, salt, (err, hash) => {
-//             // Store hash in your password DB. Save hashed password in a file with username as the title.
-//             if (!err) {
-//             //   fs.writeFile('notpasswords/' + username + '.txt', hash, (err) => {
-//                 console.log(username);
-//                 console.log(password);
-//                 console.log(hash);
-//                 res.json('Password Saved');
-//             //   })
-//             } else {
-//               console.log("There was an error with the hashing.");
-//               console.log(err);
-//               res.json("There was an error hashing yourpassword.");
-//             }
-//         });
-//     });
-// });
 
 const HighScore = require('./models/highscores');
 

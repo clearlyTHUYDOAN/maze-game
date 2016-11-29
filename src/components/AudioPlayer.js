@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 
 class AudioPlayer extends Component {
-    // constructor() {
-    //     super();
-
-        // BIND METHODS THAT NEED ACCESS TO "THIS". //
-        // this.togglePlay = this.togglePlay.bind(this);
-    // }
-
+    
     // DEFINE METHODS AND COMPONENT LIFECYCLES. //
 
     componentDidUpdate() {
