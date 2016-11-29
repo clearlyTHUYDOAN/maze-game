@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 8080;
 // Change this from 8080 to 80
 
 // Configure express server to serve production build. 
-app.use(express.static(__dirname + './../build'));
+app.use(express.static(__dirname + './build'));
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/api/data/db');
