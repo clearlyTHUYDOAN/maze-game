@@ -270,6 +270,16 @@ class App extends Component {
     )
   }
 
+  // Logic for which song to play.
+  let music = ""
+  if (start === true && stop === false && winner === false) { // During maze levels.
+    music = this.state.songs[this.state.mazesIndex]
+  } else if (start === true && stop === true && winner === false) { // Loss.
+    music = "/contraiii_casualtyofwar.mp3"
+  } else if (start === true && stop === false && winner === true) { // Win.
+    music = "/contraiii_missionaccomplished.mp3"
+  };
+
   // SVG ATTRIBUTES: //
     // DIMENSIONS OF DRAWING AREA.
 
@@ -282,7 +292,8 @@ class App extends Component {
         <h2>Maze Madness</h2>
         <button onClick={this.restartEntireGame} type="button" className="new-game">New Game</button>
         <button onClick={this.quitGame} type="button" className="quit">Quit Game</button>
-        <AudioPlayer start={this.state.start} stop={this.state.stop} winner={this.state.winner} songs={this.state.songs} mazesIndex={this.state.mazesIndex}/>
+        
+        <AudioPlayer start={this.state.start} stop={this.state.stop} winner={this.state.winner} song={music} mazesIndex={this.state.mazesIndex}/>
         
         <div id="Maze" onMouseMove={this.handleMouseMove}>
           <g>

@@ -14,16 +14,12 @@ class AudioPlayer extends Component {
     const player = this.refs.player; // Refers to audio tag in render > return.
     if (this.props.start === true && this.props.stop === false && this.props.winner === false) { // Component lifecycle ensures this happens after togglePlay and changeSong changes their respective states.
       player.play(); // The line that actually completes making songs play in addition to this.togglePlay.
-    //   let currentsong = this.props.songs[this.props.mazesIndex]
-    //   console.log(currentsong);
     } 
     else if (this.props.start === true && this.props.stop === true && this.props.winner === false) {
-        player.pause();
-        // player.play();
+        player.play(); // Needed to play songs on song change.
     } 
     else if (this.props.start === true && this.props.stop === false && this.props.winner === true) {
-        player.pause();
-        // player.play();
+        player.play(); // Needed to play songs on song change.
     }
   };
 
@@ -31,7 +27,7 @@ class AudioPlayer extends Component {
 
         return (
             <div className="AudioPlayer">
-                <audio ref="player" src={this.props.songs[this.props.mazesIndex]}></audio> 
+                <audio ref="player" src={this.props.song}></audio> 
             </div>
         );
 
