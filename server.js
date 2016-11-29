@@ -85,6 +85,14 @@ app.post('/highscores', (req, res) => { // use /highscores instead of /savehighs
     })
 })
 
-app.listen(8080, () => {
-    console.log('SERVER RUNNING ON 8080');
-})
+// use the port value from the node environment, or 8080 if it can't be found'
+const Port = process.env.PORT || 8080;
+// Change this from 8080 to 80
+app.listen(PORT, function(){
+	console.log("Listening on Port:%s",PORT)
+	console.log("Stop with Ctrl+C");
+});
+
+// app.listen(8080, () => {
+//     console.log('SERVER RUNNING ON 8080');
+// })
