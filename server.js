@@ -59,6 +59,7 @@ app.get('/highscores', (req, res) => {
     HighScore
         .find({})
         .sort({score: -1}) // to get highscores from database in descending order.
+        .limit(10)
         .exec((err, highscores) => { // highscores will be an array
             if (!err) {
                 console.log(highscores);
