@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import mazes from './components/Mazes';
 import axios from 'axios';
+import AudioPlayer from './components/AudioPlayer'
 
 class App extends Component {
   constructor() {
@@ -13,6 +14,7 @@ class App extends Component {
       quit: false,
       leaderboard: false,
       highscores: [],
+      songs: ['/contraiii_groundzero.mp3', '/contraiii_neokobesteelfactory.mp3', '/contraiii_roadwarriors.mp3', '/contraiii_invasion.mp3'],
       timer: 3000,
       maxtimers: [3000, 4000, 5000, 15000],
       score: 0,
@@ -86,7 +88,8 @@ class App extends Component {
   }
 
   leaderboard() {
-    axios.get('/highscores')
+    axios.get('http://localhost:8080/highscores')
+    // axios.get('/highscores')
     .then((response) => {
       console.log(response.data);
       this.setState({
@@ -148,6 +151,8 @@ class App extends Component {
       const offsetTop = domMaze.offsetTop - window.scrollY; // See notebook diagram.
       const mouseX = event.clientX;
       const mouseY = event.clientY;
+      // var coor = "X coords: " + mouseX + ", Y coords: " + mouseY;
+      // document.getElementById("Coordinates").innerHTML = coor;
 
       // Logic for losing.
       let outsidemaze = true;
@@ -199,7 +204,7 @@ class App extends Component {
   if (start === false && stop === false && winner === false && quit === false && leaderboard === false) { // Start screen.
     mazeState = (
       <g>
-        <svg width="120" height="80" xmlns="http://www.w3.org/2000/svg">
+        <svg xmlns="http://www.w3.org/2000/svg">
             <rect x="45" y="35" width="70" height="35" fill="black"/>
             <text x="54" y="58" fontFamily="Verdana" fontSize="15" fill="red" 
               onClick={this.start} className="start-button"> START </text>
@@ -277,6 +282,7 @@ class App extends Component {
         <h2>Maze Madness</h2>
         <button onClick={this.restartEntireGame} type="button" className="new-game">New Game</button>
         <button onClick={this.quitGame} type="button" className="quit">Quit Game</button>
+        <AudioPlayer start={this.state.start} stop={this.state.stop} winner={this.state.winner} songs={this.state.songs} mazesIndex={this.state.mazesIndex}/>
         
         <div id="Maze" onMouseMove={this.handleMouseMove}>
           <g>
