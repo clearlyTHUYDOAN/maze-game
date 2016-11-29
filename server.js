@@ -72,7 +72,3 @@ app.listen(PORT, function(){
 	console.log("Listening on Port:%s",PORT)
 	console.log("Stop with Ctrl+C");
 });
-
-// app.listen(8080, () => {
-//     console.log('SERVER RUNNING ON 8080');
-// })
