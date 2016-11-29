@@ -88,7 +88,7 @@ class App extends Component {
   }
 
   leaderboard() {
-    axios.get('http://localhost:8080/highscores')
+    axios.get('/highscores')
     // axios.get('/highscores')
     .then((response) => {
       console.log(response.data);
