@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  color: orangered;
+  color: red;
   font-family: Monospace;
 }
 
@@ -22,6 +22,10 @@
   margin: auto;
   color: black;
   background-color: darkgrey;
+}
+
+.play-button:hover {
+  cursor: pointer;
 }
 
 .start-button:hover {

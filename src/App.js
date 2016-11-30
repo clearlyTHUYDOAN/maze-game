@@ -24,6 +24,7 @@ class App extends Component {
     }
 
     // BIND METHODS THAT NEED ACCESS TO "THIS". //
+    this.play = this.play.bind(this);
     this.start = this.start.bind(this);
     this.handleMouseMove = this.handleMouseMove.bind(this);
     this.handleScore = this.handleScore.bind(this);
@@ -37,6 +38,12 @@ class App extends Component {
   };
 
   // DEFINE METHODS AND COMPONENT LIFECYCLES. //
+
+  play() {
+    this.setState ({
+      title: false
+    })
+  }
 
   start() {
     this.setState ({
@@ -205,9 +212,7 @@ class App extends Component {
       <g>
         <svg xmlns="http://www.w3.org/2000/svg">
         <foreignObject>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <img className="game-title" height="100px" src="/contraiii_title.gif"/>
-          </body>
+            <img className="game-title" alt="contra-title" height="100px" src="/contraiii_title.gif"/>
         </foreignObject>
           <text x="325" y="150" fontFamily="Monospace" fontSize="15" stroke="black" fill="black">INSPIRED</text>
           <text x="310" y="175" fontFamily="Monospace" fontSize="20" stroke="black" fill="black">MAZE GAME</text>
@@ -238,7 +243,7 @@ class App extends Component {
           <rect x="630" y="350" width="60" height="5" fill="white"/>
           <rect x="690" y="347" width="10" height="10" fill="red"/>
           <rect x="295" y="400" width="120" height="40" fill="black"/>
-          <text x="310" y="425" fontFamily="Monospace" fontSize="15" fill="silver" className="play"> START GAME </text>
+          <text x="310" y="425" fontFamily="Monospace" fontSize="15" fill="silver" className="play-button" onClick={this.play}> START GAME </text>
         </svg>
       </g>
     )
@@ -247,7 +252,7 @@ class App extends Component {
       <g>
         <svg xmlns="http://www.w3.org/2000/svg">
             <rect x="45" y="35" width="70" height="35" fill="black"/>
-            <text x="54" y="58" fontFamily="Verdana" fontSize="15" fill="red" 
+            <text x="55" y="58" fontFamily="Monospace" fontSize="15" fill="silver" 
               onClick={this.start} className="start-button"> START </text>
               <text x="260" y="250" fontFamily="sans-serif" fontSize="45" stroke="black" fill="red">LEVEL {mazesIndex + 1}</text>
         </svg>
@@ -263,7 +268,7 @@ class App extends Component {
         <svg xmlns="http://www.w3.org/2000/svg">
           <text x="100" y="250" fontFamily="sans-serif" fontSize="75" stroke="black" fill="red">GAME OVER!</text>
           <rect x="305" y="300" width="80" height="40" fill="black"/>
-          <text x="310" y="325" fontFamily="Verdana" fontSize="15" fill="red" 
+          <text x="315" y="325" fontFamily="Monospace" fontSize="15" fill="silver" 
           onClick={this.restartMaze} className="restart-button"> RESTART </text>
         </svg>
       </g>
@@ -274,7 +279,7 @@ class App extends Component {
         <svg xmlns="http://www.w3.org/2000/svg">
           <text x="80" y="250" fontFamily="sans-serif" fontSize="75" stroke="black" fill="green">YOU KILLED IT!</text>
           <rect x="290" y="300" width="120" height="40" fill="black"/>
-          <text x="305" y="325" fontFamily="Verdana" fontSize="15" fill="green" 
+          <text x="305" y="325" fontFamily="Monospace" fontSize="15" fill="silver" 
           onClick={this.nextMaze} className="next-maze-button"> NEXT LEVEL </text>
         </svg>
       </g>
@@ -286,7 +291,7 @@ class App extends Component {
         <text x="50" y="250" fontFamily="sans-serif" fontSize="60" stroke="black" fill="red">CONGRATULATIONS!</text>
         <text x="190" y="300" fontFamily="sans-serif" fontSize="20" stroke="black" fill="black">Your score for this session was {this.state.score}.</text>
         <rect x="290" y="325" width="135" height="40" fill="black"/>
-        <text x="300" y="350" fontFamily="Verdana" fontSize="15" fill="red" 
+        <text x="310" y="350" fontFamily="Monospace" fontSize="15" fill="silver" 
           onClick={this.leaderboard} className="leaderboard-button"> LEADERBOARD </text>
       </svg>
     </g>
