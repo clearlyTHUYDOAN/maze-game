@@ -288,7 +288,7 @@ class App extends Component {
     mazeState = (
       <g>
       <svg xmlns="http://www.w3.org/2000/svg">
-        <text x="75" y="250" fontFamily="Menlo" fontSize="60" stroke="black" fill="black">CONGRATULATIONS!</text>
+        <text x="75" y="250" fontFamily="Monospace" fontSize="60" stroke="black" fill="black">CONGRATULATIONS!</text>
         <text x="165" y="300" fontFamily="Menlo" fontSize="20" stroke="black" fill="black">Your score for this session was {this.state.score}.</text>
         <rect x="290" y="325" width="135" height="40" fill="black"/>
         <text x="310" y="350" fontFamily="Monospace" fontSize="15" fill="silver" 
