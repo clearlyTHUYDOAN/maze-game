@@ -34,6 +34,7 @@ class App extends Component {
     this.restartMaze = this.restartMaze.bind(this);
     this.restartEntireGame = this.restartEntireGame.bind(this);
     this.quitGame = this.quitGame.bind(this);
+    this.savePlayerName = this.savePlayerName.bind(this);
     this.addHighScore = this.addHighScore.bind(this);
     this.leaderboard = this.leaderboard.bind(this);
     this.tick = this.tick.bind(this);
@@ -97,18 +98,27 @@ class App extends Component {
     })
   }
 
+  savePlayerName (event) {
+    this.setState({
+      playername: event.target.value
+    })
+    // console.log(this.state.playername);
+  }
+
   addHighScore() {
-    axios.post('http://localhost:8080/highscores')
+    if (this.state.score !== 0 && this.state.playername !== "") {
+      axios.post('http://localhost:8080/highscores'), {
+      score: this.state.score,
+      player: this.state.playername
+    }
     .then((response) => {
       console.log(response.data);
-      this.setState({
-        highscores: response.data
-      })
     })
-    .catch(function (error) {
+    .catch((error) => {
       console.log(error);
-    });
-  }
+    })
+    }
+  };
 
   leaderboard() {
     axios.get('http://localhost:8080/highscores')
@@ -118,14 +128,14 @@ class App extends Component {
         highscores: response.data
       })
     })
-    .catch(function (error) {
+    .catch((error) => {
       console.log(error);
-    });
+    })
     this.setState ({
       timer: 0,
       leaderboard: true
     })
-  }
+  };
 
   tick() { // Causes this.state.timer to decrease at a certain speed. Shows player current maze score is decreasing as time goes on.
     const { stop, winner, timer } = this.state;
@@ -307,8 +317,8 @@ class App extends Component {
         <text x="165" y="280" fontFamily="Menlo" fontSize="20" stroke="black" fill="black">Your score for this session was {this.state.score}.</text>
         <foreignObject>
             <form>
-              <input className="player-name-input" type="text" placeholder="PLAYER NAME"/>
-              <input className="submit-player-name" type="button" value="SUBMIT"/>
+              <input onChange={this.savePlayerName} className="player-name-input" type="text" placeholder="Type player name."/>
+              <input onClick={this.addHighScore} className="submit-player-name" type="button" value="SUBMIT"/>
             </form>
         </foreignObject>
         <rect x="420" y="345" width="135" height="40" fill="black"/>
