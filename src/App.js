@@ -266,7 +266,7 @@ class App extends Component {
     mazeState = (
       <g>
         <svg xmlns="http://www.w3.org/2000/svg">
-          <text x="140" y="250" fontFamily="Monospace" fontSize="75" stroke="black" fill="black">GAME OVER</text>
+          <text x="140" y="250" fontFamily="Monospace" fontSize="75" stroke="red" fill="black">GAME OVER</text>
           <rect x="300" y="300" width="85" height="40" fill="black"/>
           <text x="310" y="325" fontFamily="Monospace" fontSize="15" fill="silver" 
           onClick={this.restartMaze} className="restart-button"> RESTART </text>
@@ -277,7 +277,7 @@ class App extends Component {
     mazeState = (
       <g>
         <svg xmlns="http://www.w3.org/2000/svg">
-          <text x="60" y="250" fontFamily="Monospace" fontSize="50" stroke="black" fill="black">MISSION ACCOMPLISHED</text>
+          <text x="60" y="250" fontFamily="Monospace" fontSize="50" stroke="red" fill="black">MISSION ACCOMPLISHED</text>
           <rect x="290" y="300" width="120" height="40" fill="black"/>
           <text x="305" y="325" fontFamily="Monospace" fontSize="15" fill="silver" 
           onClick={this.nextMaze} className="next-maze-button"> NEXT LEVEL </text>
@@ -288,10 +288,10 @@ class App extends Component {
     mazeState = (
       <g>
       <svg xmlns="http://www.w3.org/2000/svg">
-        <text x="75" y="250" fontFamily="Monospace" fontSize="60" stroke="black" fill="black">CONGRATULATIONS!</text>
-        <text x="165" y="300" fontFamily="Menlo" fontSize="20" stroke="black" fill="black">Your score for this session was {this.state.score}.</text>
-        <rect x="290" y="325" width="135" height="40" fill="black"/>
-        <text x="310" y="350" fontFamily="Monospace" fontSize="15" fill="silver" 
+        <text x="75" y="230" fontFamily="Monospace" fontSize="60" stroke="red" fill="black">CONGRATULATIONS!</text>
+        <text x="165" y="280" fontFamily="Menlo" fontSize="20" stroke="black" fill="black">Your score for this session was {this.state.score}.</text>
+        <rect x="290" y="335" width="135" height="40" fill="black"/>
+        <text x="310" y="360" fontFamily="Monospace" fontSize="15" fill="silver" 
           onClick={this.leaderboard} className="leaderboard-button"> LEADERBOARD </text>
       </svg>
     </g>
