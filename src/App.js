@@ -254,7 +254,7 @@ class App extends Component {
             <rect x="45" y="35" width="70" height="35" fill="black"/>
             <text x="55" y="58" fontFamily="Monospace" fontSize="15" fill="silver" 
               onClick={this.start} className="start-button"> START </text>
-              <text x="260" y="250" fontFamily="sans-serif" fontSize="45" stroke="black" fill="red">LEVEL {mazesIndex + 1}</text>
+              <text x="260" y="250" fontFamily="Monospace" fontSize="45" stroke="black" fill="red">LEVEL {mazesIndex + 1}</text>
         </svg>
       </g>
     )
@@ -266,9 +266,9 @@ class App extends Component {
     mazeState = (
       <g>
         <svg xmlns="http://www.w3.org/2000/svg">
-          <text x="100" y="250" fontFamily="sans-serif" fontSize="75" stroke="black" fill="red">GAME OVER!</text>
-          <rect x="305" y="300" width="80" height="40" fill="black"/>
-          <text x="315" y="325" fontFamily="Monospace" fontSize="15" fill="silver" 
+          <text x="140" y="250" fontFamily="Monospace" fontSize="75" stroke="black" fill="black">GAME OVER</text>
+          <rect x="300" y="300" width="85" height="40" fill="black"/>
+          <text x="310" y="325" fontFamily="Monospace" fontSize="15" fill="silver" 
           onClick={this.restartMaze} className="restart-button"> RESTART </text>
         </svg>
       </g>
@@ -277,7 +277,7 @@ class App extends Component {
     mazeState = (
       <g>
         <svg xmlns="http://www.w3.org/2000/svg">
-          <text x="80" y="250" fontFamily="sans-serif" fontSize="75" stroke="black" fill="green">YOU KILLED IT!</text>
+          <text x="60" y="250" fontFamily="Monospace" fontSize="50" stroke="black" fill="black">MISSION ACCOMPLISHED</text>
           <rect x="290" y="300" width="120" height="40" fill="black"/>
           <text x="305" y="325" fontFamily="Monospace" fontSize="15" fill="silver" 
           onClick={this.nextMaze} className="next-maze-button"> NEXT LEVEL </text>
@@ -288,8 +288,8 @@ class App extends Component {
     mazeState = (
       <g>
       <svg xmlns="http://www.w3.org/2000/svg">
-        <text x="50" y="250" fontFamily="sans-serif" fontSize="60" stroke="black" fill="red">CONGRATULATIONS!</text>
-        <text x="190" y="300" fontFamily="sans-serif" fontSize="20" stroke="black" fill="black">Your score for this session was {this.state.score}.</text>
+        <text x="75" y="250" fontFamily="Menlo" fontSize="60" stroke="black" fill="black">CONGRATULATIONS!</text>
+        <text x="165" y="300" fontFamily="Menlo" fontSize="20" stroke="black" fill="black">Your score for this session was {this.state.score}.</text>
         <rect x="290" y="325" width="135" height="40" fill="black"/>
         <text x="310" y="350" fontFamily="Monospace" fontSize="15" fill="silver" 
           onClick={this.leaderboard} className="leaderboard-button"> LEADERBOARD </text>
@@ -300,13 +300,13 @@ class App extends Component {
     mazeState = (
       <g>
         <svg xmlns="http://www.w3.org/2000/svg">
-          <text x="180" y="70" fontFamily="sans-serif" fontSize="45" stroke="black" fill="red">LEADERBOARD</text>
+          <text x="200" y="70" fontFamily="Monospace" fontSize="45" stroke="red" fill="black">LEADERBOARD</text>
           {highscores.map((highscore, index) => {
             let yCalc = index*30+125;
             return (
               <g key={index}>
-                <text x="200" y={yCalc} fontFamily="sans-serif" fontSize="20" stroke="black" fill="black">{this.state.highscores[index].player}</text>
-                <text x="400" y={yCalc} fontFamily="sans-serif" fontSize="20" stroke="black" fill="black">{this.state.highscores[index].score} pts</text>
+                <text x="190" y={yCalc} fontFamily="Monospace" fontSize="20" stroke="black" fill="black">{this.state.highscores[index].player}</text>
+                <text x="400" y={yCalc} fontFamily="Monospace" fontSize="20" stroke="black" fill="black">{this.state.highscores[index].score} pts</text>
               </g>
             )
           })}
