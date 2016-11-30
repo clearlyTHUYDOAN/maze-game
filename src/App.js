@@ -209,6 +209,8 @@ class App extends Component {
             <img className="game-title" height="100px" src="/contraiii_title.gif"/>
           </body>
         </foreignObject>
+          <text x="325" y="150" fontFamily="Monospace" fontSize="15" stroke="black" fill="black">INSPIRED</text>
+          <text x="310" y="175" fontFamily="Monospace" fontSize="20" stroke="black" fill="black">MAZE GAME</text>
           <rect x="0" y="350" width="80" height="5" fill="white"/>
           <rect x="80" y="250" width="5" height="105" fill="white"/>
           <rect x="80" y="245" width="75" height="5" fill="white"/>
@@ -235,6 +237,8 @@ class App extends Component {
           <rect x="630" y="155" width="5" height="195" fill="white"/>
           <rect x="630" y="350" width="60" height="5" fill="white"/>
           <rect x="690" y="347" width="10" height="10" fill="red"/>
+          <rect x="295" y="400" width="120" height="40" fill="black"/>
+          <text x="310" y="425" fontFamily="Monospace" fontSize="15" fill="silver" className="play"> START GAME </text>
         </svg>
       </g>
     )
