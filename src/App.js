@@ -9,6 +9,7 @@ class App extends Component {
     super();
     this.state = {
       title: true,
+      playername: "",
       start: false,
       stop: false,
       winner: false,
@@ -33,6 +34,7 @@ class App extends Component {
     this.restartMaze = this.restartMaze.bind(this);
     this.restartEntireGame = this.restartEntireGame.bind(this);
     this.quitGame = this.quitGame.bind(this);
+    this.addHighScore = this.addHighScore.bind(this);
     this.leaderboard = this.leaderboard.bind(this);
     this.tick = this.tick.bind(this);
   };
@@ -93,6 +95,19 @@ class App extends Component {
     this.setState ({
       quit: true
     })
+  }
+
+  addHighScore() {
+    axios.post('http://localhost:8080/highscores')
+    .then((response) => {
+      console.log(response.data);
+      this.setState({
+        highscores: response.data
+      })
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   leaderboard() {
@@ -290,8 +305,14 @@ class App extends Component {
       <svg xmlns="http://www.w3.org/2000/svg">
         <text x="75" y="230" fontFamily="Monospace" fontSize="60" stroke="red" fill="black">CONGRATULATIONS!</text>
         <text x="165" y="280" fontFamily="Menlo" fontSize="20" stroke="black" fill="black">Your score for this session was {this.state.score}.</text>
-        <rect x="290" y="335" width="135" height="40" fill="black"/>
-        <text x="310" y="360" fontFamily="Monospace" fontSize="15" fill="silver" 
+        <foreignObject>
+            <form>
+              <input className="player-name-input" type="text" placeholder="PLAYER NAME"/>
+              <input className="submit-player-name" type="button" value="SUBMIT"/>
+            </form>
+        </foreignObject>
+        <rect x="420" y="345" width="135" height="40" fill="black"/>
+        <text x="440" y="370" fontFamily="Monospace" fontSize="15" fill="silver" 
           onClick={this.leaderboard} className="leaderboard-button"> LEADERBOARD </text>
       </svg>
     </g>

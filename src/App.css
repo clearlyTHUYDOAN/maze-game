@@ -6,8 +6,26 @@
 
 .game-title {
   position: relative;
-  left: 225px;
+  left: 200px;
   top: 25px;
+}
+
+.player-name-input {
+  position: relative;
+  left: 180px;
+  top: 350px;
+}
+
+.submit-player-name {
+  position: relative;
+  left: 320px;
+  top: 327px;
+}
+
+input[type=text] {
+  padding: 5px 5px;
+  background-color: black;
+  color: white;
 }
 
 #Coordinates {
@@ -53,16 +71,4 @@
   font-weight: bold;
   text-decoration: none;
 }
-
-/*.player-name-input {
-  position: relative;
-  left: 270px;
-  top: 250px;
-}
-
-input[type=text] {
-  padding: 12px 20px;
-  background-color: black;
-  color: white;
-}*/
 
