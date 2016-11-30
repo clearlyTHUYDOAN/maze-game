@@ -8,6 +8,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      title: true,
       start: false,
       stop: false,
       winner: false,
@@ -24,11 +25,11 @@ class App extends Component {
 
     // BIND METHODS THAT NEED ACCESS TO "THIS". //
     this.start = this.start.bind(this);
-    this.restartMaze = this.restartMaze.bind(this);
     this.handleMouseMove = this.handleMouseMove.bind(this);
     this.handleScore = this.handleScore.bind(this);
     this.handleTimer = this.handleTimer.bind(this);
     this.nextMaze = this.nextMaze.bind(this);
+    this.restartMaze = this.restartMaze.bind(this);
     this.restartEntireGame = this.restartEntireGame.bind(this);
     this.quitGame = this.quitGame.bind(this);
     this.leaderboard = this.leaderboard.bind(this);
@@ -196,10 +197,48 @@ class App extends Component {
   
   // Switch views between starting screen, maze, loss, win, quit, and leaderboard. //
 
-  const { start, stop, winner, quit, leaderboard, highscores, mazes, mazesIndex } = this.state;
+  const { title, start, stop, winner, quit, leaderboard, highscores, mazes, mazesIndex } = this.state;
 
   let mazeState = []
-  if (start === false && stop === false && winner === false && quit === false && leaderboard === false) { // Start screen.
+  if (title === true) { // Title screen.
+    mazeState = (
+      <g>
+        <svg xmlns="http://www.w3.org/2000/svg">
+        <foreignObject>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <img className="game-title" height="100px" src="/contraiii_title.gif"/>
+          </body>
+        </foreignObject>
+          <rect x="0" y="350" width="80" height="5" fill="white"/>
+          <rect x="80" y="250" width="5" height="105" fill="white"/>
+          <rect x="80" y="245" width="75" height="5" fill="white"/>
+          <rect x="155" y="245" width="5" height="105" fill="white"/>
+          <rect x="155" y="350" width="25" height="5" fill="white"/>
+          <rect x="180" y="200" width="5" height="155" fill="white"/>
+          <rect x="180" y="195" width="75" height="5" fill="white"/>
+          <rect x="255" y="195" width="5" height="100" fill="white"/>
+          <rect x="255" y="295" width="25" height="5" fill="white"/>
+          <rect x="280" y="245" width="5" height="55" fill="white"/>
+          <rect x="280" y="240" width="50" height="5" fill="white"/>
+          <rect x="330" y="240" width="5" height="110" fill="white"/>
+          <rect x="330" y="350" width="50" height="5" fill="white"/>
+          <rect x="380" y="270" width="5" height="85" fill="white"/>
+          <rect x="380" y="265" width="50" height="5" fill="white"/>
+          <rect x="430" y="265" width="5" height="20" fill="white"/>
+          <rect x="430" y="285" width="20" height="5" fill="white"/>
+          <rect x="450" y="265" width="5" height="25" fill="white"/>
+          <rect x="450" y="265" width="50" height="5" fill="white"/>
+          <rect x="500" y="265" width="5" height="85" fill="white"/>
+          <rect x="500" y="350" width="50" height="5" fill="white"/>
+          <rect x="550" y="160" width="5" height="195" fill="white"/>
+          <rect x="550" y="155" width="80" height="5" fill="white"/>
+          <rect x="630" y="155" width="5" height="195" fill="white"/>
+          <rect x="630" y="350" width="60" height="5" fill="white"/>
+          <rect x="690" y="347" width="10" height="10" fill="red"/>
+        </svg>
+      </g>
+    )
+  } else if (title === false && start === false && stop === false && winner === false && quit === false && leaderboard === false) { // Start screen.
     mazeState = (
       <g>
         <svg xmlns="http://www.w3.org/2000/svg">
@@ -210,11 +249,11 @@ class App extends Component {
         </svg>
       </g>
     )
-  } else if (start === true && stop === false && winner === false && quit === false && leaderboard === false) { // Draw maze.
+  } else if (title === false && start === true && stop === false && winner === false && quit === false && leaderboard === false) { // Draw maze.
       mazeState = mazes[mazesIndex].map((rect, index) => {
           return <rect x={rect.x} y={rect.y} width={rect.width} height={rect.height} fill={rect.fill} key={index}/>
       })
-  } else if (start === true && stop === true && winner === false && quit === false && leaderboard === false) { // Loss.
+  } else if (title === false && start === true && stop === true && winner === false && quit === false && leaderboard === false) { // Loss.
     mazeState = (
       <g>
         <svg xmlns="http://www.w3.org/2000/svg">
@@ -225,7 +264,7 @@ class App extends Component {
         </svg>
       </g>
     )
-  } else if (start === true && stop === false && winner === true && quit === false && leaderboard === false) { // Win.
+  } else if (title === false && start === true && stop === false && winner === true && quit === false && leaderboard === false) { // Win.
     mazeState = (
       <g>
         <svg xmlns="http://www.w3.org/2000/svg">

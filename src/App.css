@@ -1,13 +1,13 @@
 .App {
   text-align: center;
-  color: seagreen;
+  color: orangered;
 }
 
-/*.mario {
-  position: absolute;
-  left: 1em;
-  bottom: 1em;
-}*/
+.game-title {
+  position: relative;
+  left: 225px;
+  top: 25px;
+}
 
 #Coordinates {
   color: white;
@@ -48,4 +48,16 @@
   font-weight: bold;
   text-decoration: none;
 }
+
+/*.player-name-input {
+  position: relative;
+  left: 270px;
+  top: 250px;
+}
+
+input[type=text] {
+  padding: 12px 20px;
+  background-color: black;
+  color: white;
+}*/
 
