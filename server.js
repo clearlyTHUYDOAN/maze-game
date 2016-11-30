@@ -12,7 +12,8 @@ const PORT = process.env.PORT || 8080;
 app.use(express.static(__dirname + '/build'));
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/api/data/db');
+// mongoose.connect('mongodb://localhost/api/data/db');
+mongoose.connect('mongodb://test:password@ds115918.mlab.com:15918/wdi-live-test');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

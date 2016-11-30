@@ -107,10 +107,10 @@ class App extends Component {
 
   addHighScore() {
     if (this.state.score !== 0 && this.state.playername !== "") {
-      axios.post('http://localhost:8080/highscores'), {
+      axios.post('/highscores', {
       score: this.state.score,
       player: this.state.playername
-    }
+      })
     .then((response) => {
       console.log(response.data);
     })
@@ -121,7 +121,7 @@ class App extends Component {
   };
 
   leaderboard() {
-    axios.get('http://localhost:8080/highscores')
+    axios.get('/highscores')
     .then((response) => {
       console.log(response.data);
       this.setState({
