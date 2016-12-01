@@ -16,7 +16,7 @@ class App extends Component {
       quit: false,
       leaderboard: false,
       highscores: [],
-      songs: ['/contraiii_groundzero.mp3', '/contraiii_neokobesteelfactory.mp3', '/contraiii_roadwarriors.mp3', '/contraiii_invasion.mp3'],
+      // songs: ['/contraiii_groundzero.mp3', '/contraiii_neokobesteelfactory.mp3', '/contraiii_roadwarriors.mp3', '/contraiii_invasion.mp3'],
       timer: 3000,
       maxtimers: [3000, 4000, 5000, 15000],
       score: 0,
@@ -55,16 +55,6 @@ class App extends Component {
     this.tick();
   }
 
-  restartMaze() {
-    let newTimer = this.state.maxtimers[this.state.mazesIndex];
-    this.setState ({
-      start: false,
-      stop: false,
-      winner: false,
-      timer: newTimer
-    })
-  }
-
   nextMaze() {
     let oldMazesIndex = this.state.mazesIndex;
     let newMazesIndex = oldMazesIndex + 1;
@@ -75,6 +65,16 @@ class App extends Component {
       winner: false,
       timer: newTimer,
       mazesIndex: newMazesIndex
+    })
+  }
+
+  restartMaze() {
+    let newTimer = this.state.maxtimers[this.state.mazesIndex];
+    this.setState ({
+      start: false,
+      stop: false,
+      winner: false,
+      timer: newTimer
     })
   }
 
@@ -102,7 +102,6 @@ class App extends Component {
     this.setState({
       playername: event.target.value
     })
-    // console.log(this.state.playername);
   }
 
   addHighScore() {
@@ -119,7 +118,7 @@ class App extends Component {
     })
     } else {
       alert("Either you need to submit a player name in order to be added to the leaderboard OR you cheated.");
-      console.log("Either you need to submit a player name in order to be added to the leaderboard OR you cheated.");
+      console.log("Hold the phone. You've got a cheater on your hands.");
     }
   };
 
@@ -143,7 +142,7 @@ class App extends Component {
   tick() { // Causes this.state.timer to decrease at a certain speed. Shows player current maze score is decreasing as time goes on.
     const { stop, winner, timer } = this.state;
     let newTimer =  timer - 1;
-    if (stop === false && winner === false) { // start is implied to be true because tick starts when you click start
+    if (stop === false && winner === false) { // Start is implied to be true because tick starts when you click start
       this.setState({
         timer: newTimer
       })
@@ -158,7 +157,7 @@ class App extends Component {
   }
 
   handleScore() { // Add current maze score to total maze score for a win. 
-    // implied to run when this.state.winner = true because it runs right after the state changes.
+    // Implied to run when this.state.winner = true because it runs right after the state changes.
     const { score, timer } = this.state;
     let oldScore = score;
     let newScore = oldScore + timer;
@@ -168,7 +167,7 @@ class App extends Component {
   }
 
   handleTimer() { // Reset this.state.timer (to the user: current maze score) to 0 for a loss.
-      //implied to run when this.state.stop = true because it runs right after the state changes.
+      // Implied to run when this.state.stop = true because it runs right after the state changes.
       let newTimer = 0;
       this.setState({
         timer: newTimer
@@ -191,7 +190,7 @@ class App extends Component {
       // Logic for losing.
       let outsidemaze = true;
       let winner = false;
-      let lastRect = mazes[mazesIndex].length - 1; // where the last rect object is the winning area.
+      let lastRect = mazes[mazesIndex].length - 1; // Where the last rect object is the winning area.
 
       // Go through maze's rect objects and see if the mouse is inside the maze at all.
       for (let i = 0; i < mazes[mazesIndex].length; i++) { 
@@ -216,13 +215,13 @@ class App extends Component {
       if (outsidemaze === true) {
         this.setState ({
           stop: true
-        }, this.handleTimer()) // Reset this.state.timer (to the user: current maze score) to 0 for a loss.
+        }, this.handleTimer()) // Resets this.state.timer (to the user: current maze score) to 0 for a loss.
       }
 
       if (winner === true) {
         this.setState ({
           winner: true
-        }, this.handleScore()) // Add current maze score to total maze score for a win. 
+        }, this.handleScore()) // Adds current maze score to total maze score for a win. 
       }
 
     }
@@ -230,7 +229,7 @@ class App extends Component {
 
   render() {
   
-  // Switch views between starting screen, maze, loss, win, quit, and leaderboard. //
+  // Switch views between titles screen, starting screen, maze, loss, win, quit, and leaderboard. //
 
   const { title, start, stop, winner, quit, leaderboard, highscores, mazes, mazesIndex } = this.state;
 
@@ -349,10 +348,13 @@ class App extends Component {
     )
   }
 
-  // Logic for which song to play.
+  // Logic for which song to play. Result will pass onto AudioPlayer component so logic isn't done in the child component.
+
+  const songs = ['/contraiii_groundzero.mp3', '/contraiii_neokobesteelfactory.mp3', '/contraiii_roadwarriors.mp3', '/contraiii_invasion.mp3']
+  
   let music = ""
   if (start === true && stop === false && winner === false) { // During maze levels.
-    music = this.state.songs[this.state.mazesIndex]
+    music = songs[this.state.mazesIndex]
   } else if (start === true && stop === true && winner === false) { // Loss.
     music = "/contraiii_casualtyofwar.mp3"
   } else if (start === true && stop === false && winner === true) { // Win.
