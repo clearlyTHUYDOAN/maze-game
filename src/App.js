@@ -105,7 +105,7 @@ class App extends Component {
   }
 
   addHighScore() {
-    if (this.state.score !== 0 && this.state.score <= 20000 && this.state.playername !== "") {
+    if (this.state.score !== 0 && this.state.score <= 19000 && this.state.playername !== "") {
       axios.post('/highscores', {
       score: this.state.score,
       player: this.state.playername
