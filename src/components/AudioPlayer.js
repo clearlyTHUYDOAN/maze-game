@@ -12,10 +12,10 @@ class AudioPlayer extends Component {
         player.play(); 
     } 
     else if (start === true && stop === true && winner === false && quit === false && leaderboard === false) { // Loss.
-        player.play(); // Needed to play songs on song change.
+        player.play(); // Needed to play songs on song change / view change.
     } 
     else if (start === true && stop === false && winner === true && quit === false && leaderboard === false) { // Win.
-        player.play(); // Needed to play songs on song change.
+        player.play(); // Needed to play songs on song change / view change.
     }
   };
 
