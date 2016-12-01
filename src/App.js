@@ -243,7 +243,9 @@ class App extends Component {
       <g>
         <svg xmlns="http://www.w3.org/2000/svg">
         <foreignObject>
+          <body xmlns="http://www.w3.org/1999/xhtml">
             <img className="game-title" alt="contra-title" height="100px" src="/contraiii_title.gif"/>
+          </body>
         </foreignObject>
           <text x="325" y="150" fontFamily="Monospace" fontSize="15" stroke="black" fill="black">INSPIRED</text>
           <text x="310" y="175" fontFamily="Monospace" fontSize="20" stroke="black" fill="black">MAZE GAME</text>
