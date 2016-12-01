@@ -106,7 +106,7 @@ class App extends Component {
   }
 
   addHighScore() {
-    if (this.state.score !== 0 && this.state.playername !== "") {
+    if (this.state.score !== 0 && this.state.score <= 22000 && this.state.playername !== "") {
       axios.post('/highscores', {
       score: this.state.score,
       player: this.state.playername
@@ -118,8 +118,8 @@ class App extends Component {
       console.log(error);
     })
     } else {
-      prompt("You need to submit a player name in order to be added to the leaderboard.");
-      console.log("You need to submit a player name in order to be added to the leaderboard.");
+      prompt("Either you need to submit a player name in order to be added to the leaderboard OR you cheated.");
+      console.log("Either you need to submit a player name in order to be added to the leaderboard OR you cheated.");
     }
   };
 
