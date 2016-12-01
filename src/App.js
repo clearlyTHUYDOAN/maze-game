@@ -106,7 +106,7 @@ class App extends Component {
   }
 
   addHighScore() {
-    if (this.state.score !== 0 && this.state.score <= 22000 && this.state.playername !== "") {
+    if (this.state.score !== 0 && this.state.score <= 20000 && this.state.playername !== "") {
       axios.post('/highscores', {
       score: this.state.score,
       player: this.state.playername
@@ -372,7 +372,7 @@ class App extends Component {
         <button onClick={this.restartEntireGame} type="button" className="new-game-button">New Game</button>
         <button onClick={this.quitGame} type="button" className="quit-game-button">Quit Game</button>
         
-        <AudioPlayer start={this.state.start} stop={this.state.stop} winner={this.state.winner} song={music} mazesIndex={this.state.mazesIndex}/>
+        <AudioPlayer song={music} start={this.state.start} stop={this.state.stop} winner={this.state.winner} quit={this.state.quit} leaderboard={this.state.leaderboard} mazesIndex={this.state.mazesIndex}/>
         
         <div id="Maze" onMouseMove={this.handleMouseMove}>
           <g>
