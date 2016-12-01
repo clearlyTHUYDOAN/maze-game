@@ -8,13 +8,13 @@ class AudioPlayer extends Component {
     const { start, stop, winner } = this.props;
     const player = this.refs.player; // Refers to audio tag in render > return.
 
-    if (start === true && stop === false && winner === false) { 
+    if (start === true && stop === false && winner === false) {  // During a game.
         player.play(); 
     } 
-    else if (start === true && stop === true && winner === false) {
+    else if (start === true && stop === true && winner === false) { // Loss.
         player.play(); // Needed to play songs on song change.
     } 
-    else if (start === true && stop === false && winner === true) {
+    else if (start === true && stop === false && winner === true) { // Win.
         player.play(); // Needed to play songs on song change.
     }
   };
