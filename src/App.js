@@ -388,6 +388,8 @@ class App extends Component {
           <h3>Total Score: {this.state.score}</h3>
         </div>
 
+        <h4 className="copyright">© All imagery and game music rights belong to Konami. Coded by Thuy Doan.</h4>
+
       </div>
     );
   }
