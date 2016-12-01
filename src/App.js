@@ -117,6 +117,8 @@ class App extends Component {
     .catch((error) => {
       console.log(error);
     })
+    } else {
+      prompt("You need to submit a player name in order to be added to the leaderboard.");
     }
   };
 
@@ -317,7 +319,7 @@ class App extends Component {
         <text x="165" y="280" fontFamily="Menlo" fontSize="20" stroke="black" fill="black">Your score for this session was {this.state.score}.</text>
         <foreignObject>
             <form>
-              <input onChange={this.savePlayerName} className="player-name-input" type="text" placeholder="Type player name."/>
+              <input onChange={this.savePlayerName} className="player-name-input" type="text" maxlength="15" placeholder="Type player name."/>
               <input onClick={this.addHighScore} className="submit-player-name" type="button" value="SUBMIT"/>
             </form>
         </foreignObject>
@@ -366,8 +368,8 @@ class App extends Component {
       <div className="App">
 
         <h2>Maze Madness</h2>
-        <button onClick={this.restartEntireGame} type="button" className="new-game">New Game</button>
-        <button onClick={this.quitGame} type="button" className="quit">Quit Game</button>
+        <button onClick={this.restartEntireGame} type="button" className="new-game-button">New Game</button>
+        <button onClick={this.quitGame} type="button" className="quit-game-button">Quit Game</button>
         
         <AudioPlayer start={this.state.start} stop={this.state.stop} winner={this.state.winner} song={music} mazesIndex={this.state.mazesIndex}/>
         
