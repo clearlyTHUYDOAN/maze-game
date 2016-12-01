@@ -101,7 +101,6 @@ class App extends Component {
   savePlayerName (event) {
     this.setState({
       playername: event.target.value,
-      submitted: true
     })
   }
 
@@ -110,6 +109,10 @@ class App extends Component {
       axios.post('/highscores', {
       score: this.state.score,
       player: this.state.playername
+      })
+
+      this.setState({
+        submitted: true
       })
     .then((response) => {
       console.log(response.data);
