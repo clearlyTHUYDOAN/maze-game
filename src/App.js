@@ -118,7 +118,7 @@ class App extends Component {
       console.log(error);
     })
     } else {
-      prompt("You need to submit a player name in order to be added to the leaderboard.");
+      console.log("You need to submit a player name in order to be added to the leaderboard.");
     }
   };
 
