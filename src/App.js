@@ -118,7 +118,7 @@ class App extends Component {
       console.log(error);
     })
     } else {
-      prompt("Either you need to submit a player name in order to be added to the leaderboard OR you cheated.");
+      alert("Either you need to submit a player name in order to be added to the leaderboard OR you cheated.");
       console.log("Either you need to submit a player name in order to be added to the leaderboard OR you cheated.");
     }
   };
