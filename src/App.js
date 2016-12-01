@@ -14,9 +14,9 @@ class App extends Component {
       stop: false,
       winner: false,
       quit: false,
+      submitted: false,
       leaderboard: false,
       highscores: [],
-      // songs: ['/contraiii_groundzero.mp3', '/contraiii_neokobesteelfactory.mp3', '/contraiii_roadwarriors.mp3', '/contraiii_invasion.mp3'],
       timer: 3000,
       maxtimers: [3000, 4000, 5000, 15000],
       score: 0,
@@ -100,7 +100,8 @@ class App extends Component {
 
   savePlayerName (event) {
     this.setState({
-      playername: event.target.value
+      playername: event.target.value,
+      submitted: true
     })
   }
 
@@ -320,7 +321,7 @@ class App extends Component {
         <foreignObject>
             <form>
               <input onChange={this.savePlayerName} className="player-name-input" type="text" maxlength="15" placeholder="Type player name."/>
-              <input onClick={this.addHighScore} className="submit-player-name" type="button" value="SUBMIT"/>
+              <input onClick={this.addHighScore} disabled={this.state.submitted === true} className="submit-player-name" type="button" value="SUBMIT"/>
             </form>
         </foreignObject>
         <rect x="420" y="345" width="135" height="40" fill="black"/>
@@ -390,7 +391,7 @@ class App extends Component {
           <h3>Total Score: {this.state.score}</h3>
         </div>
 
-        <h4 className="copyright">© All imagery and game music rights belong to Konami. Coded by Thuy Doan.</h4>
+        <h4 className="copyright">© All imagery and game music rights belong to Konami. Code by Thuy Doan.</h4>
 
       </div>
     );
